@@ -18,11 +18,9 @@ webserver during development to avoid issues with security restrictions (sandbox
 sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr,
 etc to function properly when an html page is opened via `file://` scheme instead of `http://`._
 
-
-## How to use angular-seed
-
-Clone the angular-seed repository and start hacking...
-
+### Notes
+* Modifying an election will change all position/runner IDs, so previous votes will be flushed.
+  This is reasonable, since if a candidate/position is added/removed, voters should be able to revote.
 
 ### Running the app during development
 
