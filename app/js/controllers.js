@@ -49,7 +49,30 @@ function AdminCtrl ($scope, $routeParams, Election, $location) {
 }
 AdminCtrl.$inject = ['$scope', '$routeParams', 'Election', '$location'];
 
-function ElectCtrl($scope, $routeParams, Election, Vote) {
+function ElectCtrl($scope, $routeParams, $location, Election, Vote) {
+	$scope.electionId = $routeParams.id;
+	$scope.election = Election.get({eId:$scope.electionId});
+	$scope.email = "";
+	$scope.pickmap = {};
+
+	$scope.save = function() {
+		if(!$scope.email || Object.keys($scope.pickmap).length != $scope.election.positions.length) {
+			//validate;
+			return;
+		}
+
+		var vote;		
+		for(var positionLabel in $scope.pickmap) {
+			vote = new Vote();
+			vote.email = $scope.email;
+			vote.election_id = $scope.electionId;
+			vote.runner_id = parseInt($scope.pickmap[positionLabel]);
+			vote.$save();
+		}
+		window.alert('You have successfully voted!');
+		$location.path('/');
+	};
+
 
 }
-ElectCtrl.$inject = ['$scope', '$routeParams', 'Election', 'Vote'];
+ElectCtrl.$inject = ['$scope', '$routeParams', '$location', 'Election', 'Vote'];
