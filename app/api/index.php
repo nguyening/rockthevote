@@ -64,17 +64,17 @@ function getElection($id) {
 			$runner_query->bindParam(1, $position->id, PDO::PARAM_INT);
 			$runner_query->execute();
 			while($runner = $runner_query->fetchObject()) {	
-				$runner->voters = array();
-
+				// $runner->voters = array();
+				
 				$voter_query->bindParam(1, $runner->id, PDO::PARAM_INT);
 				$voter_query->execute();
-				while($voter = $voter_query->fetchObject()) {
-					unset($voter->id);
-					unset($voter->election_id);
-					unset($voter->runner_id);
-					array_push($runner->voters, $voter);
-				}
-				
+				// while($voter = $voter_query->fetchObject()) {
+				// 	unset($voter->email);
+				// 	unset($voter->election_id);
+				// 	unset($voter->id);
+				// 	array_push($runner->voters, $voter);
+				// }
+				$runner->votes = count($voter_query->fetchAll());
 				unset($runner->id);
 				unset($runner->position_id);
 				array_push($position->runners, $runner);
@@ -195,6 +195,9 @@ function deleteElection($election_id) {
 		$query->bindParam(1, $election_id, PDO::PARAM_INT);
 		$query->execute();
 		$query = $db->prepare('DELETE FROM positions WHERE election_id = ?');
+		$query->bindParam(1, $election_id, PDO::PARAM_INT);
+		$query->execute();
+		$query = $db->prepare('DELETE FROM voters WHERE election_id = ?)');
 		$query->bindParam(1, $election_id, PDO::PARAM_INT);
 		$query->execute();
 	}
