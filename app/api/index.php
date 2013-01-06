@@ -242,8 +242,9 @@ $app->put('/voter(/:vid)', 'putVoter');		// Add/update a voter to an election
 function deleteVoter($vid) {
 	global $app, $db;
 	try {
-		$query = $db->prepare('DELETE FROM voters WHERE id = ?)');
-		$query->bindParam(1, $vid, PDO::PARAM_INT);
+		$vid_int = intval($vid);
+		$query = $db->prepare('DELETE FROM `voters` WHERE id = ?');
+		$query->bindParam(1, $vid_int, PDO::PARAM_INT);
 		$query->execute();
 	}
 	catch(PDOException $ex) {
