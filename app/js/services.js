@@ -1,9 +1,27 @@
 'use strict';
 
-/* Services */
+angular.module('rockTheVote.services', ['ngResource'])
+	.factory('Election', function($resource) {
+		var election = $resource('api/election/:eId/:action', {eId:'@id', action:'@action'}, {
+			save: {
+				method: "PUT"
+			},
+			getVoters: {
+				method: "GET",
+				params: {
+					action: "voters"
+				}
+			}
+		});
+		return election;
+	})
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-  value('version', '0.1');
+	.factory('Vote', function($resource) {
+		var voter = $resource('api/voter/:id', {id:'@id'}, {
+			save: {
+				method: "PUT"
+			}
+		});
+		return voter;
+	})
+  // value('version', '0.1');

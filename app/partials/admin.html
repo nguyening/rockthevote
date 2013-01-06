@@ -1,0 +1,10 @@
+<a href="#/admin/add/">Add election</a>
+
+<table>
+	<tbody>
+		<tr ng-repeat="election in elections">
+			<td>{{election.title}}</td>
+			<td><a href="#/admin/edit/{{election.id}}">Edit</a></td>
+		</tr>
+	</tbody>
+</table>

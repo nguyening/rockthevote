@@ -3,8 +3,8 @@ nbproject
 manifest.mf
 build.xml
 
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 .project
 .settings
 .idea/*

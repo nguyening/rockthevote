@@ -1,0 +1,22 @@
+<input type="text" ng-model="election.title" placeholder="Election title">
+<input type="datetime" ng-model="election.start" />
+<input type="datetime" ng-model="election.end" />
+<input type="text" ng-model="election.notes" placeholder="Notes">
+
+<button ng-click="addPosition()">Add position</button>
+<div ng-repeat="position in election.positions">
+	<input type="text" ng-model="position.title">
+	<button ng-click="removePosition($index)">Remove this position</button>
+	<button ng-click="addRunner(position)">Add runner</button>
+
+	<div ng-repeat="runner in position.runners">
+		<button ng-click="removeRunner(position, $index)">Remove runner</button>
+		<input type="text" ng-model="runner.name" placeholder="Runner name">
+		<input type="text" ng-model="runner.year" placeholder="Runner year">
+		<input type="text" ng-model="runner.concentration" placeholer="Runner concentration">
+	</div>
+</div>
+
+<button ng-click="cancel()">Cancel</button>
+<button ng-click="save()">Submit</button>
+
