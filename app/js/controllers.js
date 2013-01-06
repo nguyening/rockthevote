@@ -14,9 +14,9 @@ function AdminCtrl ($scope, $routeParams, Election, $location) {
 
 	$scope.addPosition = function() {
 		if($scope.election.positions)
-			$scope.election.positions.push({"title":"Enter a title here", runners: []});
+			$scope.election.positions.push({"title":"", runners: []});
 		else
-			$scope.election.positions = [{"title":"Enter a title here", runners: []}];
+			$scope.election.positions = [{"title":"", runners: []}];
 	};
 
 	$scope.removePosition = function(positionIdx) {
@@ -25,9 +25,9 @@ function AdminCtrl ($scope, $routeParams, Election, $location) {
 
 	$scope.addRunner = function(position) {
 		position.runners.push({
-			"name":"Enter a name here",
+			"name":"",
 			"year":0,
-			"concentration":"Enter a concentration"
+			"concentration":""
 		});
 	};
 
@@ -76,3 +76,9 @@ function ElectCtrl($scope, $routeParams, $location, Election, Vote) {
 
 }
 ElectCtrl.$inject = ['$scope', '$routeParams', '$location', 'Election', 'Vote'];
+
+function ResultCtrl ($scope, $routeParams, Election) {
+	$scope.electionId = $routeParams.id;
+	$scope.election = Election.get({eId:$scope.electionId});
+}
+ResultCtrl.$inject = ['$scope', '$routeParams', 'Election'];

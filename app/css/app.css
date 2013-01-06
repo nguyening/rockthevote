@@ -1,30 +1,27 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+td.table-cell-hover *{
+	opacity: 0;
 }
 
-.menu:before {
-  content: "[";
+tr:hover td.table-cell-hover * {
+	opacity: 1;
 }
 
-.menu:after {
-  content: "]";
+#footer {
+	padding: 20px 0 10px 0;
 }
 
-.menu > li {
-  display: inline;
+.runner > input[type="radio"] {
+	display: none;
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
+.runner:hover .thumbnail,
+.runner > input[type="radio"]:checked + .thumbnail {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }

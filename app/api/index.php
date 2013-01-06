@@ -75,12 +75,12 @@ function getElection($id) {
 				// 	array_push($runner->voters, $voter);
 				// }
 				$runner->votes = count($voter_query->fetchAll());
-				unset($runner->id);
+				// unset($runner->id);
 				unset($runner->position_id);
 				array_push($position->runners, $runner);
 			}
 
-			unset($position->id);
+			// unset($position->id);
 			unset($position->election_id);
 			array_push($election->positions, $position);
 		}

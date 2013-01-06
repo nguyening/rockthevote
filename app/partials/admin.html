@@ -1,10 +1,13 @@
-<a href="#/admin/add/">Add election</a>
+<a class="btn btn-primary pull-right" href="#/admin/add/">Add election</a>
 
-<table>
+<table class="table table-striped table-hover">
+	<thead>
+		<tr><th>Elections</th><th></th></tr>
+	</thead>
 	<tbody>
 		<tr ng-repeat="election in elections">
 			<td>{{election.title}}</td>
-			<td><a href="#/admin/edit/{{election.id}}">Edit</a></td>
+			<td class="table-cell-hover"><a href="#/admin/edit/{{election.id}}">Edit</a></td>
 		</tr>
 	</tbody>
 </table>

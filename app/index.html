@@ -2,16 +2,29 @@
 <html lang="en" ng-app="rockTheVote">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My AngularJS App</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="all">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="all">
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/admin">admin</a></li>
-    <li><a href="#/">user</a></li>
-  </ul>
+  <div id="main" class="container clear-top">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="#/" class="brand">Rock the Vote!</a>
+        <ul class="nav">
+          <!-- <li><a href="#/admin">Admin</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div ng-view></div>
 
-  <div ng-view></div>
+    <div id="footer"class="muted">
+      <center>By: <a href="mailto:richard_nguyen@brown.edu">Richard Nguyen</a> | Source: <a href="http://github.com/nguyening/rockthevote/">GitHub</a></center>
+    </div>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
@@ -23,5 +36,6 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
