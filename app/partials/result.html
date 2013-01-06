@@ -1,0 +1,35 @@
+
+<div class="election_details well">
+	<h1>{{election.title}}</h1>
+	<p class="muted">{{election.notes}}</p>
+</div>
+
+<div class="position" ng-repeat="position in election.positions">
+	<h2>{{position.title}} <small><a ng-click="position.showLosers = !position.showLosers">(full result)</a></small></h2>
+
+	<ul class="thumbnails winners">
+		<li class="runner span4" ng-repeat="runner in position.runners | filter:{winner: true}">
+
+			<div class="thumbnail">
+					<p>{{runner.name}} ({{runner.year}})</p>
+					<h3 class="pull_right"></h3>
+					<div class="progress">
+						<div class="bar" style="width: {{runner.percentage}}%;">{{runner.votes}} ({{runner.percentage}}%)</div>
+					</div>
+			</div>
+		</li>
+	</ul>
+
+	<ul ng-show="position.showLosers" class="thumbnails losers">
+		<li class="runner span4" ng-repeat="runner in position.runners | filter:{winner: false}">
+
+			<div class="thumbnail">
+					<p>{{runner.name}} ({{runner.year}})</p>
+					<h3 class="pull_right"></h3>
+					<div class="progress">
+						<div class="bar" style="width: {{runner.percentage}}%;">{{runner.votes}} ({{runner.percentage}}%)</div>
+					</div>
+			</div>
+		</li>
+	</ul>
+</div>

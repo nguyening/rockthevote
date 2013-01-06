@@ -1,0 +1,9 @@
+<div class="alert alert-info"><strong>Tip: </strong>Although users will have multiple votes for one ballot, they will usually occur in a row. Look for odd signatures and clear signs of a user multi-voting.</div>
+
+<div ng-repeat="voter in voters">
+	<div class="input-prepend input-append">
+		<span class="add-on">{{voter.id}}</span>
+		<input type="text" ng-model="voter.email" disabled>
+		<button class="btn btn-danger" ng-click="remove($index)">Delete</button>
+	</div>
+</div>
