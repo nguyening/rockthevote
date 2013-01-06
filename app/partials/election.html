@@ -1,28 +1,28 @@
-<div class="election_details well">
-	<h1>{{election.title}}</h1>
-	<p class="muted">{{election.notes}}</p>
-</div>
+<form id="voting">
+	<div class="election_details well">
+		<h1>{{election.title}}</h1>
+		<p class="muted">{{election.notes}}</p>
+	</div>
 
-<div class="position" ng-repeat="position in election.positions">
-	<h2>{{position.title}} <small>Candidates</small></h2>
+	<div class="position" ng-repeat="position in election.positions">
+		<h2>{{position.title}} <small>Candidates</small></h2>
 
-	<ul class="thumbnails">
-		<li class="runner span4" ng-repeat="runner in position.runners">
-			<input type="radio" id="runner_{{runner.id}}" name="position_{{position.id}}" ng-model="pickmap[position.title]" value="{{runner.id}}">
+		<ul class="thumbnails">
+			<li class="runner span4" ng-repeat="runner in position.runners">
+				<input type="radio" id="runner_{{runner.id}}" name="position_{{position.id}}" ng-model="pickmap[position.title]" value="{{runner.id}}">
 
-			<div class="thumbnail">
-				<label for="runner_{{runner.id}}">
-					<p>{{runner.name}} ({{runner.year}})</p>
-					<p>{{runner.concentration}}</p>
-				</label>
-			</div>
-		</li>
-	</ul>
-</div>
+				<div class="thumbnail">
+					<label for="runner_{{runner.id}}">
+						<p>{{runner.name}} ({{runner.year}})</p>
+						<p>{{runner.concentration}}</p>
+					</label>
+				</div>
+			</li>
+		</ul>
+	</div>
 
-<div class="input-append">
-	<input type="text" ng-model="email" placeholder="my_name@email.com">
-	<button class="btn btn-primary" ng-click="save()">Cast my vote!</button>
-</div>
-
-
+	<div class="input-append">
+		<input type="text" ng-model="email" placeholder="my_name@email.com">
+		<button class="btn btn-primary" ng-click="save()">Cast my vote!</button>
+	</div>
+</form>

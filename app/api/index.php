@@ -27,7 +27,7 @@ function getElections() {
 	$elections = [];
 
 	try {
-		$election_rows = $db->query('SELECT `id`, `title` FROM `elections`');
+		$election_rows = $db->query('SELECT `id`, `title`, `end` FROM `elections`');
 		foreach($election_rows as $election)
 			array_push($elections, $election);
 

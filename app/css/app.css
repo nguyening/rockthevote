@@ -1,3 +1,7 @@
+td.table-cell-hover, td.table-control-cell {
+	text-align: right;
+}
+
 td.table-cell-hover *{
 	opacity: 0;
 }
@@ -10,11 +14,11 @@ tr:hover td.table-cell-hover * {
 	padding: 20px 0 10px 0;
 }
 
-.runner > input[type="radio"] {
+#voting .runner > input[type="radio"] {
 	display: none;
 }
 
-.runner:hover .thumbnail,
+#voting .runner:hover .thumbnail,
 .runner > input[type="radio"]:checked + .thumbnail {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;

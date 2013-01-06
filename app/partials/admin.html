@@ -7,7 +7,9 @@
 	<tbody>
 		<tr ng-repeat="election in elections">
 			<td>{{election.title}}</td>
-			<td class="table-cell-hover"><a href="#/admin/edit/{{election.id}}">Edit</a></td>
+			<td class="table-cell-hover"><a class="btn" href="#/admin/manage/{{election.id}}">Manage</a>
+			<a class="btn" href="#/admin/edit/{{election.id}}">Edit</a>
+			<button class="btn btn-danger" ng-click="delete($index)">Delete</button></td>
 		</tr>
 	</tbody>
 </table>

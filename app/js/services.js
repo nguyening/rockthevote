@@ -10,7 +10,8 @@ angular.module('rockTheVote.services', ['ngResource'])
 				method: "GET",
 				params: {
 					action: "voters"
-				}
+				},
+				isArray: true
 			}
 		});
 		return election;

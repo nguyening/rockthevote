@@ -10,10 +10,10 @@
 	<tbody>
 		<tr ng-repeat="election in elections">
 			<td>{{election.title}}</td>
-			<td>
-				<ng-switch on="election.end">
-					<a ng-switch-when="19" href="#/election/{{eletion.id}}/result">Results</a>
-					<a ng-switch-default href="#/election/{{election.id}}">Participate</a>
+			<td class="table-control-cell">
+				<ng-switch on="hasClosed(election.end)">
+					<a class="btn" ng-switch-when="true" href="#/election/{{election.id}}/result">Results</a>
+					<a class="btn" ng-switch-default href="#/election/{{election.id}}">Participate</a>
 				</ng-switch>
 			</td>
 		</tr>
