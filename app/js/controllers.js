@@ -2,7 +2,7 @@
 
 function AdminViewCtrl($scope, Election) {
 	$scope.elections = Election.query();
-	$scope.delete = function(eidx) {
+	$scope.remove = function(eidx) {
 		new Election().$delete({eId : $scope.elections[eidx].id});
 		$scope.elections.splice(eidx, 1);
 	};

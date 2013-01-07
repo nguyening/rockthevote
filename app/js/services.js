@@ -16,7 +16,6 @@ angular.module('rockTheVote.services', ['ngResource'])
 		});
 		return election;
 	})
-
 	.factory('Vote', function($resource) {
 		var voter = $resource('api/voter/:id', {id:'@id'}, {
 			save: {
@@ -24,5 +23,4 @@ angular.module('rockTheVote.services', ['ngResource'])
 			}
 		});
 		return voter;
-	})
-  // value('version', '0.1');
+	});
