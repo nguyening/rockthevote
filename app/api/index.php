@@ -27,7 +27,7 @@ function getElections() {
 	$elections = [];
 
 	try {
-		$election_rows = $db->query('SELECT `id`, `title`, `end` FROM `elections`');
+		$election_rows = $db->query('SELECT `id`, `title`, `start`, `end` FROM `elections`');
 		foreach($election_rows as $election)
 			array_push($elections, $election);
 
@@ -64,23 +64,16 @@ function getElection($id) {
 			$runner_query->bindParam(1, $position->id, PDO::PARAM_INT);
 			$runner_query->execute();
 			while($runner = $runner_query->fetchObject()) {	
-				// $runner->voters = array();
 				
 				$voter_query->bindParam(1, $runner->id, PDO::PARAM_INT);
 				$voter_query->execute();
-				// while($voter = $voter_query->fetchObject()) {
-				// 	unset($voter->email);
-				// 	unset($voter->election_id);
-				// 	unset($voter->id);
-				// 	array_push($runner->voters, $voter);
-				// }
+				$runner->year = (int) $runner->year; 					// fetchObject returns all values as Strings
 				$runner->votes = count($voter_query->fetchAll());
-				// unset($runner->id);
+
 				unset($runner->position_id);
 				array_push($position->runners, $runner);
 			}
 
-			// unset($position->id);
 			unset($position->election_id);
 			array_push($election->positions, $position);
 		}
