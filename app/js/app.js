@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rockTheVote', ['rockTheVote.services']).
+angular.module('rockTheVote', ['rockTheVote.services', 'ui.directives']).
   config(['$routeProvider', function($routeProvider) {
   	$routeProvider.when('/', {templateUrl: 'partials/view.html', controller: UserViewCtrl});
   	$routeProvider.when('/election/:id', {templateUrl: 'partials/election.html', controller: ElectCtrl});

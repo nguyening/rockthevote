@@ -1,4 +1,7 @@
-<form id="voting">
+<ng-switch on="hasClosed(election.end)">
+
+<div ng-switch-default class="alert alert-error">This election has closed.</div>
+<form ng-switch-when="false" name="ballot" id="voting" ng-submit="save()">
 	<div class="election_details well">
 		<h1>{{election.title}}</h1>
 		<p class="muted">{{election.notes}}</p>
@@ -6,10 +9,11 @@
 
 	<div class="position" ng-repeat="position in election.positions">
 		<h2>{{position.title}} <small>Candidates</small></h2>
-
+		<!-- TODO: Show error message, but AngularJS cannot use dynamically generated 'name' fields
+		<div class="alert alert-error" ng-show="ballot.__name__.$error.required">Please select a candidate for each position!</div> -->
 		<ul class="thumbnails">
 			<li class="runner span4" ng-repeat="runner in position.runners">
-				<input type="radio" id="runner_{{runner.id}}" name="position_{{position.id}}" ng-model="pickmap[position.title]" value="{{runner.id}}">
+				<input type="radio" id="runner_{{runner.id}}" name="position_{{position.id}}" ng-model="pickmap[position.title]" value="{{runner.id}}" required>
 
 				<div class="thumbnail">
 					<label for="runner_{{runner.id}}">
@@ -22,7 +26,7 @@
 	</div>
 
 	<div class="input-append">
-		<input type="text" ng-model="email" placeholder="my_name@email.com">
-		<button class="btn btn-primary" ng-click="save()">Cast my vote!</button>
+		<input type="email" ng-model="email" placeholder="my_name@email.com" required />
+		<button type="submit" class="btn btn-primary">Cast my vote!</button>
 	</div>
 </form>

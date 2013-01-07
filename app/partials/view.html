@@ -11,7 +11,7 @@
 		<tr ng-repeat="election in elections">
 			<td>{{election.title}}</td>
 			<td class="table-control-cell">
-				<ng-switch on="hasClosed(election.end)">
+				<ng-switch on="hasPassed(election.end)">
 					<a class="btn" ng-switch-when="true" href="#/election/{{election.id}}/result">Results</a>
 					<a class="btn" ng-switch-default href="#/election/{{election.id}}">Participate</a>
 				</ng-switch>

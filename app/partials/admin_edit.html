@@ -1,38 +1,80 @@
-<form>
-	<!-- <div class="row"><div class="span4 offset4"> -->
-		<input class="input-block-level" type="text" ng-model="election.title" placeholder="Election title" required />
+<form name="election_editor" ng-submit="save()">
 		
-	<!-- <div class="controls controls-row"> -->
-		<input class="span2" type="datetime" ng-model="election.start" required />
-		<input class="span2" type="datetime" ng-model="election.end" required />
-	<!-- </div> -->
+	<!-- TODO: Display error labels based on FormController-->
+	<!-- BEG SUBFORM election details -->
+	<ng-form="election_details" class="form-horizontal">
+		<div class="page-header">
+			<h2>Election Details</h2>
+		</div>
+		<!-- BEG election title -->
+		<div class="control-group">
+			<label for="title" class="control-label">Title</label>
+			<div class="controls">
+				<input class="span4" type="text" name="title" ng-model="election.title" placeholder="Enter a name here" required />
+				<!-- <span class="error" ng-show="election_details.title.$error.required">*</span> -->
+			</div>
+		</div>
+		<!-- END election title -->
 
-	<textarea class="input-block-level" ng-model="election.notes" placeholder="Notes"></textarea>
-	<!-- </div></div> -->
+		<!-- BEG election start -->
+		<div class="control-group">
+			<label for="start" class="control-label">Start Date</label>
+			<div class="controls">
+				<!-- <input class="" type="text" name="title" ng-model="election.title" placeholder="Election title" required /> -->
+				<input class="span4" name="start" type="text" ng-model="election.start" placeholder="Click to add" ui-date required />
+				<!-- <span class="error" ng-show="election_details.start.$error.required">*</span> -->
+			</div>
+		</div>
+		<!-- END election start -->
 
-	<div class="">
+		<!-- BEG election end -->
+		<div class="control-group">
+			<label for="start" class="control-label">End Date</label>
+			<div class="controls">
+				<input class="span4" name="end" type="text" ng-model="election.end" placeholder="Click to add" ui-date required />
+				<!-- <span class="error" ng-show="election_details.start.$error.required">*</span> -->
+			</div>
+		</div>
+		<!-- END election end -->
+
+		<!-- BEG election notes -->
+		<div class="control-group">
+			<label for="notes" class="control-label">Notes</label>
+			<div class="controls">
+				<textarea class="span4" name="notes" ng-model="election.notes" placeholder="Notes"></textarea>
+			</div>
+		</div>
+		<!-- END election notes -->
+	</ng-form>
+	<!-- END SUBFORM election details -->
+	
+	<div class="page-header">
+		<h2>Election Positions</h2>
+	</div>
+
+	<ng-form>
 		<div class="well" ng-repeat="position in election.positions">
 			<div class="input-append">
-				<input type="text" ng-model="position.title" required />
+				<input type="text" ng-model="position.title" placeholder="Position title" required />
 				<button class="btn btn-danger" ng-click="removePosition($index)"><i class="icon-remove"></i></button>
 			</div>
 
 			<table class="table table-striped table-hover">
 				<tr ng-repeat="runner in position.runners">
 						<td><input type="text" ng-model="runner.name" placeholder="Runner name" required /></td>
-						<td><input type="text" ng-model="runner.year" placeholder="Runner year" required /></td>
-						<td><input type="text" ng-model="runner.concentration" placeholer="Runner concentration"></td>
+						<td><input type="number" ng-model="runner.year" placeholder="Runner year" min="1900" required /></td>
+						<td><input type="text" ng-model="runner.concentration" placeholder="Runner concentration"></td>
 						<td class="table-cell-hover"><button class="btn btn-danger" ng-click="removeRunner(position, $index)"><i class="icon-remove"></i></button></td>
 				</tr>
 			</table>
 
 			<button class="btn btn-success" ng-click="addRunner(position)">Add runner</button>
 		</div>
-	</div>
+	</ng-form>
 
 	<button class="btn" ng-click="addPosition()">Add position</button>
 	<div class="form-actions">
-		<button class="btn btn-primary" ng-click="save()">Submit</button>
+		<button type="submit" class="btn btn-primary">Submit</button>
 		<button class="btn" ng-click="cancel()">Cancel</button>
 	</div>
 </form>

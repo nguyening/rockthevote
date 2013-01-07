@@ -10,6 +10,10 @@ tr:hover td.table-cell-hover * {
 	opacity: 1;
 }
 
+th .btn {
+	font-weight: normal;
+}
+
 #footer {
 	padding: 20px 0 10px 0;
 }
