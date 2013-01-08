@@ -120,8 +120,7 @@ function ElectCtrl($scope, $routeParams, $location, Election, Vote) {
 			vote.runner_id = parseInt($scope.pickmap[positionLabel]);
 			vote.$save();
 		}
-		window.alert('You have successfully voted!');
-		$location.path('/');
+		$location.path('/election/'+$scope.electionId+'/result');
 	};
 
 
