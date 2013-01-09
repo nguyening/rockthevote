@@ -1,0 +1,27 @@
+
+<div class="election_details well">
+	<h1>{{election.title}}</h1>
+	<p class="muted">{{election.notes}}</p>
+</div>
+
+<ng-switch on="hasClosed(election.end)">
+	<!-- Election has not closed yet -->
+	<div ng-switch-default class="alert alert-error">Thank you for participating, but this election hasn't finished yet!</div>
+
+	<!-- RESULTS -->
+	<div id="results" ng-switch-when="true">
+		<div class="position" ng-repeat="position in election.positions">
+			<h2>{{position.title}}</h2>
+
+			<ul class="thumbnails">
+				<li class="runner span4" ng-repeat="runner in position.runners">
+
+					<div class="thumbnail">
+							<p>{{runner.name}} ({{runner.year}})</p>
+							<h2 number-roulette fields="3" ng-model="runner.votes">{{runner.votes}}</h2>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</ng-switch>

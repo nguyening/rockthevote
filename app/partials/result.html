@@ -19,8 +19,10 @@
 					<div class="thumbnail">
 							<p>{{runner.name}} ({{runner.year}})</p>
 							<h3 class="pull_right"></h3>
+							<h2>{{runner.votes}}</h2>
 							<div class="progress">
-								<div class="bar" style="width: {{runner.percentage}}%;">{{runner.votes}} ({{runner.percentage}}%)</div>
+								<number-increment number="runner.percentage" step="10"></number-increment>
+								<div class="bar" style="width: {{runner.percentage}}%;">({{runner.percentage}}%)</div>
 							</div>
 					</div>
 				</li>
